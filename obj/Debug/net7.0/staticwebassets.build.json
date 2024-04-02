@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "b2yTyv02hdtzQ0BezwEAeFmyXnRUP1woHYWb6H/ZvjY=",
+  "Source": "CaddyTrack",
+  "BasePath": "_content/CaddyTrack",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

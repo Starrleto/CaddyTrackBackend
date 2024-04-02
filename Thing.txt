@@ -1,0 +1,31 @@
+------------------ Login / User things
+
+## Login Endpoints
+
+Login
+Create User
+Forgot Password (Change password with Username)
+Edit User (pfp, username)
+
+
+## User Model
+
+Profile Picture
+Username
+Password (Salt and Hash)
+
+------------------ Chatroom
+
+## Chatroom Endpoints
+
+Add Message
+Delete Message
+Show Messages
+
+## Chatroom Model
+
+Publisher (User)
+Messages
+
+------------------ Chatroom
+
