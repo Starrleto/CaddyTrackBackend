@@ -40,29 +40,30 @@ namespace CaddyTrack.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MessageModel",
+                name: "Messages",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
+                    ChatroomModelID = table.Column<int>(type: "int", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PublisherName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ChatroomModelID = table.Column<int>(type: "int", nullable: true)
+                    PublisherName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MessageModel", x => x.ID);
+                    table.PrimaryKey("PK_Messages", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_MessageModel_Chatrooms_ChatroomModelID",
+                        name: "FK_Messages_Chatrooms_ChatroomModelID",
                         column: x => x.ChatroomModelID,
                         principalTable: "Chatrooms",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MessageModel_ChatroomModelID",
-                table: "MessageModel",
+                name: "IX_Messages_ChatroomModelID",
+                table: "Messages",
                 column: "ChatroomModelID");
         }
 
@@ -70,7 +71,7 @@ namespace CaddyTrack.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MessageModel");
+                name: "Messages");
 
             migrationBuilder.DropTable(
                 name: "UserInfo");

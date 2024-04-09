@@ -46,5 +46,12 @@ namespace CaddyTrack.Controllers
         public bool Delete(string name){
             return _service.DeleteChatroom(name);
         }
+
+        [HttpDelete]
+        [Route("DeleteMessage/{messageID}/{chat}")]
+
+        public bool DeleteMessage(int messageID, string chat){
+            return _service.DeleteMessageFrom(messageID, chat);
+        }
     }
 }

@@ -34,11 +34,19 @@ namespace CaddyTrack.Services
         }
 
         public List<MessageModel> GetChatroomMessagesFrom(string name){
+            ChatroomModel c = GetChatroomByName(name);
             if(DoesChatroomExist(name)){
-                return GetChatroomByName(name).Messages;
+                return _context.Messages.Where(m => m.ChatroomModelID == c.ID).ToList();
             }
             else
                 return null;
+        }
+
+        public bool DeleteMessageFrom(int messageID, string chat){
+            if(DoesChatroomExist(chat)){
+                _context.Messages.Remove(_context.Messages.FirstOrDefault(m => m.ID == messageID));
+            }
+            return _context.SaveChanges() != 0;
         }
 
         public bool AddChatroom(string name){
