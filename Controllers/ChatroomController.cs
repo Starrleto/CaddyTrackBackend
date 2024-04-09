@@ -21,35 +21,36 @@ namespace CaddyTrack.Controllers
 
         [HttpPost]
         [Route("SendMessage/{name}")]
-
         public bool SendMessage(MessageDTO message, string name){
             return _service.AddMessage(message, name);
         }
 
         [HttpPost]
         [Route("CreateChatroom/{name}")]
-
         public bool CreateChatroom(string name){
             return _service.AddChatroom(name);
         }
 
         [HttpGet]
         [Route("GetMessagesFromChatroom/{name}")]
-
         public List<MessageModel> GetMessages(string name){
             return _service.GetChatroomMessagesFrom(name);
         }
 
+        [HttpGet]
+        [Route("Test/{name}")]
+        public string Test(string name){
+            return _service.Test(name);
+        }
+
         [HttpDelete]
         [Route("DeleteChatroom/{name}")]
-
         public bool Delete(string name){
             return _service.DeleteChatroom(name);
         }
 
         [HttpDelete]
         [Route("DeleteMessage/{messageID}/{chat}")]
-
         public bool DeleteMessage(int messageID, string chat){
             return _service.DeleteMessageFrom(messageID, chat);
         }
