@@ -59,8 +59,9 @@ namespace CaddyTrack.Services
             UserModel u = GetUserByUsername(user);
 
             if(u != null){
-                List<Trackermodel> trackers = GetTrackersByUser(user);
-                trackers.Remove(trackers.FirstOrDefault(t => t.ID == id));
+                Trackermodel t = _context.Trackers.FirstOrDefault(tracker => tracker.ID == id && tracker.UserModelID == u.ID);
+                if(t!= null)
+                    _context.Trackers.Remove(_context.Trackers.FirstOrDefault(tracker => tracker.ID == id && tracker.UserModelID == u.ID));
             }
 
             return _context.SaveChanges() != 0;

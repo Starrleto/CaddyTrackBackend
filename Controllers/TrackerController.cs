@@ -27,13 +27,13 @@ namespace CaddyTrack.Controllers
 
         [HttpPost]
         [Route("AddTracker/{user}")]
-        public bool AddTracker(TrackerDTO t, string user){
+        public bool AddTracker(string user, TrackerDTO t){
             return _service.AddTracker(t,user);
         }
 
         [HttpPatch]
         [Route("EditTracker/{user}/{id}")]
-        public bool EditTracker(TrackerDTO t, string user, int id){
+        public bool EditTracker(string user, int id, TrackerDTO t){
             return _service.EditTracker(t, user, id);
         }
 

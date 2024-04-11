@@ -19,5 +19,7 @@ namespace CaddyTrack.Models.DTO
             MaxYardage = m;
             ConfidenceLevel = c;
         }
+
+        public TrackerDTO(){}
     }
 }

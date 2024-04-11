@@ -12,7 +12,7 @@ namespace CaddyTrack.Models
         public int ID { get; set; }
         public string? Username { get; set; }
         public string? ProfilePicture { get; set; }
-        public List<Trackermodel> Trackers { get; set; }
+        public List<Trackermodel>? Trackers { get; set; }
         public string? Salt { get; set; }
         public string? Hash { get; set; }
 

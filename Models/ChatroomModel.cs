@@ -12,7 +12,6 @@ namespace CaddyTrack.Models
         public int ID { get; set; }
         public string? ChatroomName { get; set; }
         public List<MessageModel>? Messages { get; set; }
-
         public ChatroomModel(string name)
         {
             ChatroomName = name;
