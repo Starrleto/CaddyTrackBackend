@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaddyTrack.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240411202842_init")]
+    [Migration("20240411205502_init")]
     partial class init
     {
         /// <inheritdoc />

@@ -128,7 +128,7 @@ namespace CaddyTrack.Services
         public UserInfoDTO GetUserInfoByName(string name){
             if(DoesUserExist(name)){
                 UserModel user = GetUserByUsername(name);
-                UserInfoDTO info = new UserInfoDTO(user.ID, user.Username, user.ProfilePicture);
+                UserInfoDTO info = new UserInfoDTO(user.ID, user.Username, user.ProfilePicture, user.Trackers);
                 return info;
             }
             return null;

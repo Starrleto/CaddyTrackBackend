@@ -19,7 +19,7 @@ namespace CaddyTrack.Services
 
             UserModel user = GetUserByUsername(name);
 
-            if(user == null){
+            if(user != null){
                 return _context.Trackers.Where(t => t.UserModelID == user.ID).ToList();
             }
             return null;
@@ -38,9 +38,31 @@ namespace CaddyTrack.Services
             return _context.SaveChanges() != 0;
         }
         public bool EditTracker(TrackerDTO t, string user, int id){
+
+            List<Trackermodel> trackers = GetTrackersByUser(user);
+
+            if(trackers != null){
+                
+                Trackermodel model = trackers.FirstOrDefault(t => t.ID == id);
+                if(model != null) {
+                    model.Name = t.Name;
+                    model.StockYardage = t.StockYardage;
+                    model.MaxYardage = t.MaxYardage;
+                    model.ConfidenceLevel = t.ConfidenceLevel;
+                }
+            }
+
             return _context.SaveChanges() != 0;
         }
-        public bool DeleteTracker(TrackerDTO t, string user, int id){
+        public bool DeleteTracker(string user, int id){
+
+            UserModel u = GetUserByUsername(user);
+
+            if(u != null){
+                List<Trackermodel> trackers = GetTrackersByUser(user);
+                trackers.Remove(trackers.FirstOrDefault(t => t.ID == id));
+            }
+
             return _context.SaveChanges() != 0;
         }
 

@@ -10,12 +10,14 @@ namespace CaddyTrack.Models.DTO
         public int UserID { get; set; }
         public string? Username { get; set; }
         public string? ProfilePicture { get; set; }
+        public List<Trackermodel> Trackers { get; set; }
 
-        public UserInfoDTO(int id, string n, string p)
+        public UserInfoDTO(int id, string n, string p, List<Trackermodel> t)   
         {
             UserID = id;
             Username = n;
             ProfilePicture = p;
+            Trackers = t;
         }
     }
 }
