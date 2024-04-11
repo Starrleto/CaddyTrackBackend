@@ -14,6 +14,7 @@ namespace CaddyTrack.Services.Context
         public DbSet<UserModel> UserInfo { get; set; }
         public DbSet<ChatroomModel> Chatrooms { get; set; }
         public DbSet<MessageModel> Messages { get; set; }
+        public DbSet<Trackermodel> Trackers { get; set; }
 
         public DataContext(DbContextOptions options): base(options){}
 

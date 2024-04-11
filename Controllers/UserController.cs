@@ -38,6 +38,18 @@ namespace CaddyTrack.Controllers
             return _data.UpdateUser(name, update);
         }
 
+        [HttpPut]
+        [Route("UpdateUserPassword/{name}")]
+        public bool ForgotPassword(string name, string newPassword){
+            return _data.ForgotPassword(name, newPassword);
+        }
+
+        [HttpGet]
+        [Route("GetUserInfoByName/{name}")]
+        public UserInfoDTO GetUserInfoByName(string name){
+            return _data.GetUserInfoByName(name);
+        }
+
         [HttpDelete]
         [Route("RemoveUser/{name}")]
         public bool DeleteUser(string name){

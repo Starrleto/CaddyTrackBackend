@@ -124,5 +124,30 @@ namespace CaddyTrack.Services
 
             return result;
         }
+
+        public UserInfoDTO GetUserInfoByName(string name){
+            if(DoesUserExist(name)){
+                UserModel user = GetUserByUsername(name);
+                UserInfoDTO info = new UserInfoDTO(user.ID, user.Username, user.ProfilePicture);
+                return info;
+            }
+            return null;
+        }
+
+        public bool ForgotPassword(string name, string newPassword){
+
+            if(DoesUserExist(name)){
+                UserModel user = GetUserByUsername(name);
+
+                PasswordDTO newPass = HashPassword(newPassword);
+
+                user.Salt = newPass.Salt;
+                user.Hash = newPass.Hash;
+
+                _context.Update<UserModel>(user);
+            }
+
+            return _context.SaveChanges() != 0;
+        }
     }
 }

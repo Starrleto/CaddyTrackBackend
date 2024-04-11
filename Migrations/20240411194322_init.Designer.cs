@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaddyTrack.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240402205753_init")]
+    [Migration("20240411194322_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -67,6 +67,36 @@ namespace CaddyTrack.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("CaddyTrack.Models.Trackermodel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("ConfidenceLevel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxYardage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StockYardage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserModelID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserModelID");
+
+                    b.ToTable("Trackers");
+                });
+
             modelBuilder.Entity("CaddyTrack.Models.UserModel", b =>
                 {
                     b.Property<int>("ID")
@@ -101,9 +131,23 @@ namespace CaddyTrack.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CaddyTrack.Models.Trackermodel", b =>
+                {
+                    b.HasOne("CaddyTrack.Models.UserModel", null)
+                        .WithMany("Trackers")
+                        .HasForeignKey("UserModelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CaddyTrack.Models.ChatroomModel", b =>
                 {
                     b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("CaddyTrack.Models.UserModel", b =>
+                {
+                    b.Navigation("Trackers");
                 });
 #pragma warning restore 612, 618
         }
