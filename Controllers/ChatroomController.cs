@@ -37,12 +37,6 @@ namespace CaddyTrack.Controllers
             return _service.GetChatroomMessagesFrom(name);
         }
 
-        [HttpGet]
-        [Route("Test/{name}")]
-        public string Test(string name){
-            return _service.Test(name);
-        }
-
         [HttpDelete]
         [Route("DeleteChatroom/{name}")]
         public bool Delete(string name){

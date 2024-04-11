@@ -70,9 +70,5 @@ namespace CaddyTrack.Services
         public bool DoesChatroomExist(string name){
             return GetChatroomByName(name) != null;
         }
-
-        public string Test(string name){
-            return name;
-        }
     }
 }
