@@ -19,18 +19,6 @@ namespace CaddyTrack.Controllers
             _service = s;
         }
 
-        public List<Trackermodel> GetTrackersByUser(string user){
-            return _service.GetTrackersByUser(user);
-        }
 
-        public bool AddTracker(TrackerDTO t){
-            return _service.AddTracker(t);
-        }
-        public bool EditTracker(TrackerDTO t){
-            return _service.EditTracker(t);
-        }
-        public bool DeleteTracker(TrackerDTO t){
-            return _service.DeleteTracker(t);
-        }
     }
 }

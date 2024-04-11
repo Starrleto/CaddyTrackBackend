@@ -14,5 +14,13 @@ namespace CaddyTrack.Models
         public int MaxYardage { get; set; }
         public int ConfidenceLevel { get; set; }
 
+        public Trackermodel(string n, int s, int m, int c)
+        {
+            Name = n;
+            StockYardage = s;
+            MaxYardage = m;
+            ConfidenceLevel = c;
+        }
+        public Trackermodel(){}
     }
 }
