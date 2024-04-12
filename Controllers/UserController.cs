@@ -39,7 +39,7 @@ namespace CaddyTrack.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateUserPassword/{name}")]
+        [Route("UpdateUserPassword/{name}/{newPassword}")]
         public bool ForgotPassword(string name, string newPassword){
             return _data.ForgotPassword(name, newPassword);
         }
