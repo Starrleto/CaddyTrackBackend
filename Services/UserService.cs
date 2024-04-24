@@ -36,7 +36,7 @@ namespace CaddyTrack.Services
         }
 
         public bool DoesUserExist(string name){
-            return GetUserByUsername(name) != null;
+            return _context.UserInfo.Where(user => user.Username == name).Any();
         }
 
         public UserModel GetUserByUsername(string name){
