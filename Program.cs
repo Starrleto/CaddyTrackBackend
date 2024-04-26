@@ -1,3 +1,4 @@
+using CaddyTrack.Hubs;
 using CaddyTrack.Services;
 using CaddyTrack.Services.Context;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ChatroomService>();
 builder.Services.AddScoped<TrackerService>();
+builder.Services.AddSignalR();
 
 // Allows connection to a database
 var connectionString = builder.Configuration.GetConnectionString("SillyConnection");
@@ -46,5 +48,7 @@ app.UseCors("BlogPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>(pattern:"/Chat");
 
 app.Run();

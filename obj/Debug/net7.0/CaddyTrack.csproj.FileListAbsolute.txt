@@ -74,3 +74,5 @@ C:\Users\ellie\Documents\Codestack omg\CaddyTrack\obj\Debug\net7.0\refint\CaddyT
 C:\Users\ellie\Documents\Codestack omg\CaddyTrack\obj\Debug\net7.0\CaddyTrack.pdb
 C:\Users\ellie\Documents\Codestack omg\CaddyTrack\obj\Debug\net7.0\CaddyTrack.genruntimeconfig.cache
 C:\Users\ellie\Documents\Codestack omg\CaddyTrack\obj\Debug\net7.0\ref\CaddyTrack.dll
+C:\Users\ellie\Documents\Codestack omg\CaddyTrack\bin\Debug\net7.0\package-lock.json
+C:\Users\ellie\Documents\Codestack omg\CaddyTrack\bin\Debug\net7.0\package.json
