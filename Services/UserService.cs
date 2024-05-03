@@ -128,7 +128,9 @@ namespace CaddyTrack.Services
         public UserInfoDTO GetUserInfoByName(string name){
             if(DoesUserExist(name)){
                 UserModel user = GetUserByUsername(name);
-                UserInfoDTO info = new UserInfoDTO(user.ID, user.Username, user.ProfilePicture, user.Trackers);
+                List<Trackermodel> userTrackers = GetTrackersByUser(name);
+
+                UserInfoDTO info = new UserInfoDTO(user.ID, user.Username, user.ProfilePicture, userTrackers);
                 return info;
             }
             return null;
@@ -148,6 +150,16 @@ namespace CaddyTrack.Services
             }
 
             return _context.SaveChanges() != 0;
+        }
+
+        public List<Trackermodel> GetTrackersByUser(string name){
+
+            UserModel user = GetUserByUsername(name);
+
+            if(user != null){
+                return _context.Trackers.Where(t => t.UserModelID == user.ID).ToList();
+            }
+            return null;
         }
     }
 }
