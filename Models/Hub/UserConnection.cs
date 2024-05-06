@@ -7,7 +7,7 @@ namespace CaddyTrack.Models.Hub
 {
     public class UserConnection
     {
-        public string? Username {get; set;}
-        public string? Chatroom {get; set;}
+        public string Username {get; set;}
+        public string Chatroom {get; set;}
     }
 }
