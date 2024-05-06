@@ -28,7 +28,7 @@ namespace CaddyTrack.Hubs
 
             _shared.connections[Context.ConnectionId] = con;
 
-            await Clients.Group(con.Chatroom).SendAsync("ReceiveMessage", "admin", $"{con.Username} has entered the chat.");
+            await Clients.Group(con.Chatroom).SendAsync("JoinSpecificChat", "admin", $"{con.Username} has entered the chat.");
         }
 
         public async Task SendMessage(string msg){
