@@ -24,7 +24,7 @@ namespace CaddyTrack.Hubs
         }
 
         public async Task JoinSpecificChat(UserConnection con){
-            await Groups.AddToGroupAsync(Context.ConnectionId, groupName:con.Chatroom);
+            await Groups.AddToGroupAsync(Context.ConnectionId, con.Chatroom);
 
             _shared.connections[Context.ConnectionId] = con;
 
