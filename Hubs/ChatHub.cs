@@ -20,7 +20,7 @@ namespace CaddyTrack.Hubs
         // In Front end, just create different buttons to join chatrooms
         // Pass the username of logged in user and name of chat joining with method on the button
         public async Task JoinChat(UserConnection con){
-            await Clients.All.SendAsync(method:"ReceiveMessage", arg1:"admin", arg2:$"{con.Username} has entered the chat.");
+            await Clients.All.SendAsync("ReceiveMessage", "admin", $"{con.Username} has entered the chat.");
         }
 
         public async Task JoinSpecificChat(UserConnection con){
@@ -28,12 +28,12 @@ namespace CaddyTrack.Hubs
 
             _shared.connections[Context.ConnectionId] = con;
 
-            await Clients.Group(con.Chatroom).SendAsync(method:"ReceiveMessage", arg1:"admin", arg2:$"{con.Username} has entered the chat.");
+            await Clients.Group(con.Chatroom).SendAsync("ReceiveMessage", "admin", $"{con.Username} has entered the chat.");
         }
 
         public async Task SendMessage(string msg){
             if(_shared.connections.TryGetValue(Context.ConnectionId, out UserConnection conn)){
-                await Clients.Group(conn.Chatroom).SendAsync(method:"ReceiveSpecificMessage", arg1:conn.Username, arg2:msg);
+                await Clients.Group(conn.Chatroom).SendAsync("ReceiveSpecificMessage", conn.Username, msg);
             }
         }
 
