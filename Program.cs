@@ -18,6 +18,11 @@ var connectionString = builder.Configuration.GetConnectionString("SillyConnectio
 
 builder.Services.AddDbContext<DataContext>(Options => Options.UseSqlServer(connectionString));
 
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(Options => {
     Options.AddPolicy("BlogPolicy",
     builder => {
@@ -28,10 +33,6 @@ builder.Services.AddCors(Options => {
     });
 });
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<SharedDB>();
 
 var app = builder.Build();
