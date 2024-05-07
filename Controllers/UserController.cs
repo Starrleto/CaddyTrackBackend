@@ -50,6 +50,12 @@ namespace CaddyTrack.Controllers
             return _data.GetUserInfoByName(name);
         }
 
+        [HttpGet]
+        [Route("GetUserPfp/{name}")]
+        public string GetUserPfp(string name){
+            return _data.GetUserPfp(name);
+        }
+
         [HttpDelete]
         [Route("RemoveUser/{name}")]
         public bool DeleteUser(string name){

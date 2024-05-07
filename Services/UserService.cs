@@ -28,7 +28,10 @@ namespace CaddyTrack.Services
                 PasswordDTO password = HashPassword(addUser.Password);
 
                 UserModel newUser = new UserModel(addUser.Username, password.Salt, password.Hash, addUser.ProfilePicture);
-                _context.Add<UserModel>(newUser);
+
+                if(!DoesUserExist(addUser.Username))
+                    _context.Add<UserModel>(newUser);
+                    
                 return _context.SaveChanges() != 0;
             }
 
@@ -37,6 +40,13 @@ namespace CaddyTrack.Services
 
         public bool DoesUserExist(string name){
             return _context.UserInfo.Where(user => user.Username == name).Any();
+        }
+
+        public string GetUserPfp(string name){
+            if(DoesUserExist(name)){
+                return _context.UserInfo.SingleOrDefault(user => user.Username == name).ProfilePicture;
+            }
+            else return "";
         }
 
         public UserModel GetUserByUsername(string name){
