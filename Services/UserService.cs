@@ -91,13 +91,20 @@ namespace CaddyTrack.Services
             UserModel user = GetUserByUsername(username);
 
             if(user != null){
-                user.Username = update.Username;
-                user.ProfilePicture = update.ProfilePicture;
 
-                PasswordDTO newPassword = HashPassword(update.Password);
+                if(update.Username != "")
+                    user.Username = update.Username;
+                else
+                    return false;
 
-                user.Salt = newPassword.Salt;
-                user.Hash = newPassword.Hash;
+                if(update.ProfilePicture != "")
+                    user.ProfilePicture = update.ProfilePicture;
+
+                if(update.Password != ""){
+                    PasswordDTO newPassword = HashPassword(update.Password);
+                    user.Salt = newPassword.Salt;
+                    user.Hash = newPassword.Hash;
+                }
 
                 _context.Update<UserModel>(user);
             }
