@@ -90,7 +90,7 @@ namespace CaddyTrack.Services
 
             if(update.Username.Trim() == "")
                 return false;
-            if(DoesUserExist(update.Username))
+            if(DoesUserExist(update.Username) && update.Username != username)
                 return false;
 
             UserModel user = GetUserByUsername(username);
