@@ -88,14 +88,14 @@ namespace CaddyTrack.Services
 
         public bool UpdateUser(string username, UpdateUserDTO update){
 
+            if(update.Username.Trim() == "")
+                return false;
+
             UserModel user = GetUserByUsername(username);
 
             if(user != null){
 
-                if(update.Username != "")
-                    user.Username = update.Username;
-                else
-                    return false;
+                user.Username = update.Username;
 
                 if(update.ProfilePicture != "")
                     user.ProfilePicture = update.ProfilePicture;
